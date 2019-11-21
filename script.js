@@ -1,5 +1,3 @@
-let imageSrc;
-
 let drawRect = function(x, y, width, height, color){
     context.beginPath();
     context.rect(x, y, width, height);
@@ -340,11 +338,10 @@ function activateImageLoad() {
     fetch(url)
         .then(res => res.json())
         .then(data => {
-            imageSrc = data.urls.small;
+            image.src = data.urls.small;
         });
 
     image.crossOrigin = "Anonymous";
-    image.src = imageSrc;
     image.onload = function(){
         context.drawImage(image,0,0, canvasWidth, canvasHeight)
     }
